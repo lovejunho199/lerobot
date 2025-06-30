@@ -77,6 +77,24 @@ while True:
 </hfoption>
 </hfoptions>
 
+### Teleoperate two SO101 arms
+
+To control a dual-arm setup, combine two SO101 robots and leader arms. Example command:
+
+```bash
+python -m lerobot.teleoperate \
+    --robot.type=so101_dual_follower \
+    --robot.left.port=/dev/ttyUSB0 \
+    --robot.left.id=left_arm \
+    --robot.right.port=/dev/ttyUSB1 \
+    --robot.right.id=right_arm \
+    --teleop.type=so101_dual_leader \
+    --teleop.left.port=/dev/ttyUSB2 \
+    --teleop.left.id=left_leader \
+    --teleop.right.port=/dev/ttyUSB3 \
+    --teleop.right.id=right_leader
+```
+
 The teleoperate command will automatically:
 1. Identify any missing calibrations and initiate the calibration procedure.
 2. Connect the robot and teleop device and start teleoperation.
